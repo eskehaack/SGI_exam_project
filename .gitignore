@@ -160,3 +160,5 @@ cython_debug/
 #.idea/
 
 .vscode
+html_scrape
+html_scrape_old
