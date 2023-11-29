@@ -27,3 +27,14 @@ def get_sents(node_att):
             post_sents[post_id] = 0
     
     return post_sents
+
+if __name__ == "__main__":
+    import pickle; import networkx as nx
+    with open('graph_analysis/Bipartite_G_5251_cutoff_v2.pkl', 'rb') as f:
+        G = pickle.load(f)
+        
+    node_att = nx.get_node_attributes(G, 'bipartite')
+    posts = [node for node in G.nodes if node_att[node]]
+    n = nx.subgraph(G, posts)
+
+    sents = get_sents(nx.get_node_attributes(n, 'text'))
